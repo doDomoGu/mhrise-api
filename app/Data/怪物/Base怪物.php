@@ -5,6 +5,7 @@ class Base怪物 {
     public $name = null;  //中文名
     public $jp = null; // 日文名
     public $en = null; // 英文名
+
     public $picture = null; // 图片
     public $category = null; // 怪物种类
     public $material = null; // 素材名称（前缀）

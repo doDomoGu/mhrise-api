@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/monster', 'MonsterController@index');
+
+Route::get('/monster/test', 'MonsterController@test');
+
 Route::get('/monster/list', 'MonsterController@list');
 
 

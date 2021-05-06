@@ -1,14 +1,14 @@
 <?php
-namespace App\Data\怪物\大型;
-
-use App\Data\怪物\Base怪物;
+namespace App\Data\怪物;
 
 class 青熊兽 extends Base怪物 {
+
     public $name = '青熊兽';
     public $jp = 'アオアシラ';
     public $en = 'Arzuros'; // 英文名
     public $picture = null; // 图片
     public $category = '牙兽种';
+
     public $material = '青熊兽'; // 素材名称（前缀）
     public $pronunciation = 'せいゆうじゅう'; // 读法 
     public $laststage = 'MHXX'; // 最终登场
