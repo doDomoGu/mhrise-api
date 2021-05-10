@@ -12,6 +12,7 @@ class MonsterController extends Controller
     public function index() {
         $this->写入怪物();
         $this->写入地图();
+        $this->写入武器();
     }
 
     public function test() {
@@ -34,7 +35,7 @@ class MonsterController extends Controller
 
         $content = [];
         foreach($files as $f) {
-            if($f === '.' || $f === '..' || $f === 'Base怪物.php') continue;
+            if(substr($f,-4) != '.php' || $f === 'Base怪物.php') continue;
 
             $className = pathinfo($f)['filename'];
 
@@ -57,7 +58,30 @@ class MonsterController extends Controller
 
         $content = [];
         foreach($files as $f) {
-            if($f === '.' || $f === '..' || $f === 'Base地图.php') continue;
+            if(substr($f,-4) != '.php' || $f === 'Base地图.php') continue;
+
+            $className = pathinfo($f)['filename'];
+
+            if(isset($testList) && !in_array($className, $testList)) continue;
+
+            $class = $classPath.$className;
+            
+            $content[] = $class::data();
+        }
+
+        $this->w($writeFileName, json_encode($content));
+    }
+
+    private function 写入武器(){
+        // $testList = ['废神社'];
+        $classPath = 'App\\Data\\武器\\';
+        $files = scandir(app_path('Data/武器'));
+
+        $writeFileName = 'weapon.json'; 
+
+        $content = [];
+        foreach($files as $f) {
+            if(substr($f,-4) != '.php' || $f === 'Base武器.php') continue;
 
             $className = pathinfo($f)['filename'];
 
