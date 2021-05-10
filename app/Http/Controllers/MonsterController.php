@@ -11,6 +11,7 @@ class MonsterController extends Controller
 {
     public function index() {
         $this->写入怪物();
+        $this->写入地图();
     }
 
     public function test() {
@@ -45,11 +46,29 @@ class MonsterController extends Controller
         }
 
         $this->w($writeFileName, json_encode($content));
+    }
 
+    private function 写入地图(){
+        // $testList = ['废神社'];
+        $classPath = 'App\\Data\\地图\\';
+        $files = scandir(app_path('Data/地图'));
 
-        // $list = 
-        
-        // 青熊兽::data();
+        $writeFileName = 'map.json'; 
+
+        $content = [];
+        foreach($files as $f) {
+            if($f === '.' || $f === '..' || $f === 'Base地图.php') continue;
+
+            $className = pathinfo($f)['filename'];
+
+            if(isset($testList) && !in_array($className, $testList)) continue;
+
+            $class = $classPath.$className;
+            
+            $content[] = $class::data();
+        }
+
+        $this->w($writeFileName, json_encode($content));
     }
 
     public function list() {

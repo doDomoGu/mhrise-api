@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function w($fileName, $txt) {
-        $file = fopen("/var/www/dodomogu/mhrise/src/data/".$fileName, "w");
+        $file = fopen("/var/www/dodomogu/mhrise/src/json/".$fileName, "w");
 
         fwrite($file, $txt);
 
