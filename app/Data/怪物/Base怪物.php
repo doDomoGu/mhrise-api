@@ -6,7 +6,7 @@ class Base怪物 {
     public $jp = null; // 日文名
     public $en = null; // 英文名
 
-    public $picture = null; // 图片
+    public $image = null; // 图片
     public $category = null; // 怪物种类
     public $material = null; // 素材名称（前缀）
     public $pronunciation = null; // 读法 
@@ -24,12 +24,10 @@ class Base怪物 {
 
     public $body = null; //肉质  二维数组  下标一：身体部位  下标二：何种伤害 分别是 斩、打、弹、火、水、雷、冰、龙   
     
-
-
-
-
     public static function data() {
         return get_class_vars(static::class);
     }
+
+    
 
 }

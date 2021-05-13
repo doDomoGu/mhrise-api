@@ -43,10 +43,17 @@ class MonsterController extends Controller
 
             $class = $classPath.$className;
             
-            $content[] = $class::data();
+            $data = $class::data();
+
+            $content[] = $data;
+
+            // 写入怪物图片
+            if(!!$data['image']){
+                $this->i($this->imageOriginPath.$data['image'], $this->imageTargetPath.$data['image']);
+            }
         }
 
-        $this->w($writeFileName, json_encode($content));
+        $this->w($this->jsonPath.$writeFileName, json_encode($content));
     }
 
     private function 写入地图(){
@@ -69,7 +76,7 @@ class MonsterController extends Controller
             $content[] = $class::data();
         }
 
-        $this->w($writeFileName, json_encode($content));
+        $this->w($this->jsonPath.$writeFileName, json_encode($content));
     }
 
     private function 写入武器(){
@@ -92,7 +99,7 @@ class MonsterController extends Controller
             $content[] = $class::data();
         }
 
-        $this->w($writeFileName, json_encode($content));
+        $this->w($this->jsonPath.$writeFileName, json_encode($content));
     }
 
     public function list() {

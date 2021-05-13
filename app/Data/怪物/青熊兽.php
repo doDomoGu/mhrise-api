@@ -6,7 +6,7 @@ class 青熊兽 extends Base怪物 {
     public $name = '青熊兽';
     public $jp = 'アオアシラ';
     public $en = 'Arzuros'; // 英文名
-    public $picture = null; // 图片
+    public $image = '怪物/青熊兽.jpg'; // 图片
     public $category = '牙兽种';
 
     public $material = '青熊兽'; // 素材名称（前缀）

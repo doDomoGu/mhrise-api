@@ -11,11 +11,21 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function w($fileName, $txt) {
-        $file = fopen("/var/www/dodomogu/mhrise/src/json/".$fileName, "w");
+    public $jsonPath = "/var/www/dodomogu/mhrise/src/data/json/";
+
+    public $imageTargetPath = "/var/www/dodomogu/mhrise/src/data/images/";
+    public $imageOriginPath = "/var/www/dodomogu/mhrise-api/app/Data/图片/";
+    
+
+    public function w($filePath, $txt) {
+        $file = fopen($filePath, "w");
 
         fwrite($file, $txt);
 
         fclose($file);
-    } 
+    }
+
+    public function i($originFilePath, $targetFilePath) {
+        copy($originFilePath,$targetFilePath);
+    }
 }
